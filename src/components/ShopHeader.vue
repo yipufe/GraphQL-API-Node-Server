@@ -1,20 +1,19 @@
 <template>
-  <div id="app">
-    <Shop/>
+  <div>
+    <h1>Header</h1>
   </div>
 </template>
 
 <script>
-import Shop from './components/Shop.vue'
+
 
 export default {
-  name: 'App',
   components: {
-    Shop
+
   }
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>
