@@ -21,6 +21,7 @@ type Post {
 type Query {
   feed: [Post!]!
   filterPosts(searchString: String): [Post!]!
+  allPosts: [Post!]!
   post(where: PostWhereUniqueInput!): Post
 }
 
@@ -72,6 +73,9 @@ const resolvers = {
           ],
         },
       })
+    },
+    allPosts: (parent, args, ctx) => {
+      return ctx.prisma.post.findMany()
     },
     post: (parent, args, ctx) => {
       return ctx.prisma.post.findOne({
