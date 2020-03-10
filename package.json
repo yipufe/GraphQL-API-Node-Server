@@ -1,24 +1,23 @@
 {
-  "name": "assignment",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "javascript-graphql",
+  "scripts": {
+    "dev": "node ./src/server.js"
+  },
   "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "body-parser": "^1.19.0",
-    "esm": "^3.2.25",
-    "express": "^4.17.1",
-    "express-session": "^1.17.0",
-    "mongodb": "^3.5.2",
-    "mongoose": "^5.8.11"
+    "@prisma/client": "2.0.0-preview022",
+    "graphql": "14.6.0",
+    "graphql-tools": "4.0.7",
+    "graphql-yoga": "1.18.3"
   },
   "devDependencies": {
-    "nodemon": "^2.0.2"
+    "prisma2": "2.0.0-preview022"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon -r esm index.js"
+  "prettier": {
+    "singleQuote": true,
+    "semi": false,
+    "trailingComma": "all"
   },
-  "author": "",
-  "license": "ISC"
+  "engines": {
+    "node": ">=10.0.0"
+  }
 }
