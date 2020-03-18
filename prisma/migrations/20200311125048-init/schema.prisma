@@ -1,0 +1,19 @@
+datasource db {
+  provider = "postgresql"
+  url = "***"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Bottle {
+  id String @default(cuid()) @id
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  itemCode String
+  bottleType String
+  price Float
+  description String
+  imageUrl String
+}

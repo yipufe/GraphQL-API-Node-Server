@@ -2,11 +2,15 @@ import { PrismaClient } from '@prisma/client'
 
 const prismaClient = new PrismaClient()
 
-async function createPost() {
+async function createBottle() {
     try {
-        await prismaClient.post.create({
+        await prismaClient.bottle.create({
             data: {
-                title: 'The first post by Ryan'
+                itemCode: '00500',
+                bottleType: 'Water bottle',
+                price: 1.00,
+                description: 'A bottle with water in it',
+                imageUrl: ''
             }
         })    
     } catch(err) {
@@ -16,7 +20,7 @@ async function createPost() {
 
 async function main() {
     try {
-        await createPost()
+        await createBottle()
     } catch(err) {
         console.log(err)
     }
