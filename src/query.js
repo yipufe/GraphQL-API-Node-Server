@@ -1,4 +1,4 @@
-import { idArg, queryType, stringArg } from 'nexus'
+import { idArg, queryType, stringArg, mutationField, mutationType } from 'nexus'
 
 export const Query = queryType({
     definition(t) {
@@ -14,13 +14,6 @@ export const Query = queryType({
                 })
             }
         })
-
-        // t.list.field('Bottles', {
-        //     type: 'Bottle',
-        //     resolve: (parent, args, ctx) => {
-        //         return ctx.prisma.bottle.findMany()
-        //     }
-        // })
 
         t.list.field('Bottles', {
             type: 'Bottle',
@@ -47,7 +40,36 @@ export const Query = queryType({
             }
         })
 
+    }
+})
 
+
+export const Mutation = mutationType({
+    type: 'Mutation',
+    definition(t) {
+        t.field('CreateBottle', {
+            type: 'Bottle',
+            args: {
+                itemCode: stringArg({nullable: true}),
+                bottleType: stringArg({nullable: true}),
+                price: stringArg(),
+                description: stringArg({nullable: true}),
+                imageUrl: stringArg({nullable: true}),
+
+            },
+            resolve: (parent, {itemCode, bottleType, price, description, imageUrl}, ctx) => {
+                return ctx.prisma.bottle.create({
+                    data: {
+                        itemCode: itemCode,
+                        bottleType: bottleType,
+                        price: 5,
+                        description: description,
+                        imageUrl: imageUrl
+                    }
+                })
+                
+            }
+        })
     }
 })
 
@@ -78,6 +100,22 @@ query filterBottles {
     bottleType
     price
     description
+  }
+}
+
+query getBundles {
+  Bundles {
+    id
+    bundle
+    price
+    description
+    imageUrl
+  }
+}
+
+mutation setBottle {
+  CreateBottle {
+		itemCode: id
   }
 }
 

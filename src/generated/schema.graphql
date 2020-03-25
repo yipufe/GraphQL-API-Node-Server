@@ -25,6 +25,10 @@ type Bundle {
 
 scalar DateTime
 
+type Mutation {
+  CreateBottle(bottleType: String, description: String, imageUrl: String, itemCode: String, price: String): Bottle!
+}
+
 type Query {
   Bottle(id: ID): Bottle
   Bottles(searchString: String): [Bottle!]!

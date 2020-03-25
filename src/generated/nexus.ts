@@ -27,6 +27,7 @@ export interface NexusGenEnums {
 export interface NexusGenRootTypes {
   Bottle: prisma.Bottle;
   Bundle: prisma.Bundle;
+  Mutation: {};
   Query: {};
   String: string;
   Int: number;
@@ -59,6 +60,9 @@ export interface NexusGenFieldTypes {
     price: number; // Float!
     updatedAt: any; // DateTime!
   }
+  Mutation: { // field return type
+    CreateBottle: NexusGenRootTypes['Bottle']; // Bottle!
+  }
   Query: { // field return type
     Bottle: NexusGenRootTypes['Bottle'] | null; // Bottle
     Bottles: NexusGenRootTypes['Bottle'][]; // [Bottle!]!
@@ -67,6 +71,15 @@ export interface NexusGenFieldTypes {
 }
 
 export interface NexusGenArgTypes {
+  Mutation: {
+    CreateBottle: { // args
+      bottleType?: string | null; // String
+      description?: string | null; // String
+      imageUrl?: string | null; // String
+      itemCode?: string | null; // String
+      price?: string | null; // String
+    }
+  }
   Query: {
     Bottle: { // args
       id?: string | null; // ID
@@ -82,7 +95,7 @@ export interface NexusGenAbstractResolveReturnTypes {
 
 export interface NexusGenInheritedFields {}
 
-export type NexusGenObjectNames = "Bottle" | "Bundle" | "Query";
+export type NexusGenObjectNames = "Bottle" | "Bundle" | "Mutation" | "Query";
 
 export type NexusGenInputNames = never;
 
