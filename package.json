@@ -6,6 +6,9 @@
     "createDB": "npx prisma2 migrate save --name 'init' --experimental && npx prisma2 migrate up --experimental",
     "generate": "npx prisma2 generate",
     "postinstall": "npm -s run generate",
+    
+    "rebuild": "npm run nuke && npm run launchDocker && npm run createDB && npm run generate && npm run postinstall",
+    
     "seed": "node -r esm prisma/seed",
     "dev": "npx prisma2 studio --experimental",
     "start": "node -r esm ./src/server"

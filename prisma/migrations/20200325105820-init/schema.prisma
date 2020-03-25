@@ -17,3 +17,13 @@ model Bottle {
   description String
   imageUrl String
 }
+
+model Bundle {
+  id String @default(cuid()) @id
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  bundle String
+  price Float
+  description String
+  imageUrl String
+}

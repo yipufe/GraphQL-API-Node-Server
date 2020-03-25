@@ -26,6 +26,7 @@ export interface NexusGenEnums {
 
 export interface NexusGenRootTypes {
   Bottle: prisma.Bottle;
+  Bundle: prisma.Bundle;
   Query: {};
   String: string;
   Int: number;
@@ -49,9 +50,19 @@ export interface NexusGenFieldTypes {
     price: number; // Float!
     updatedAt: any; // DateTime!
   }
+  Bundle: { // field return type
+    bundle: string; // String!
+    createdAt: any; // DateTime!
+    description: string; // String!
+    id: string; // String!
+    imageUrl: string; // String!
+    price: number; // Float!
+    updatedAt: any; // DateTime!
+  }
   Query: { // field return type
     Bottle: NexusGenRootTypes['Bottle'] | null; // Bottle
     Bottles: NexusGenRootTypes['Bottle'][]; // [Bottle!]!
+    Bundles: NexusGenRootTypes['Bundle'][]; // [Bundle!]!
   }
 }
 
@@ -71,7 +82,7 @@ export interface NexusGenAbstractResolveReturnTypes {
 
 export interface NexusGenInheritedFields {}
 
-export type NexusGenObjectNames = "Bottle" | "Query";
+export type NexusGenObjectNames = "Bottle" | "Bundle" | "Query";
 
 export type NexusGenInputNames = never;
 

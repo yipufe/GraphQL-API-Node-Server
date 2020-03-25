@@ -39,6 +39,15 @@ export const Query = queryType({
             }
         })
 
+        //bundles
+        t.list.field('Bundles', {
+            type: 'Bundle',
+            resolve: (parent, args, ctx) => {
+                return ctx.prisma.bundle.findMany()
+            }
+        })
+
+
     }
 })
 

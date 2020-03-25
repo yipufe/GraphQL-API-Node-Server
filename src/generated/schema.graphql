@@ -13,9 +13,20 @@ type Bottle {
   updatedAt: DateTime!
 }
 
+type Bundle {
+  bundle: String!
+  createdAt: DateTime!
+  description: String!
+  id: String!
+  imageUrl: String!
+  price: Float!
+  updatedAt: DateTime!
+}
+
 scalar DateTime
 
 type Query {
   Bottle(id: ID): Bottle
   Bottles(searchString: String): [Bottle!]!
+  Bundles: [Bundle!]!
 }
