@@ -13,6 +13,10 @@ type Bottle {
   updatedAt: DateTime!
 }
 
+input BottleWhereUniqueInput {
+  id: String
+}
+
 type Bundle {
   bundle: String!
   createdAt: DateTime!
@@ -26,7 +30,9 @@ type Bundle {
 scalar DateTime
 
 type Mutation {
-  CreateBottle(bottleType: String, description: String, imageUrl: String, itemCode: String, price: String): Bottle!
+  CreateBottle(bottleType: String!, description: String, imageUrl: String, itemCode: String!, price: Float!): Bottle!
+  deleteOneBottle(where: BottleWhereUniqueInput!): Bottle
+  UpdateBottle(bottleType: String, description: String, id: ID!, imageUrl: String, itemCode: String, price: Float): Bottle!
 }
 
 type Query {

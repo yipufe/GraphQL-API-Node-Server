@@ -19,6 +19,9 @@ declare global {
 }
 
 export interface NexusGenInputs {
+  BottleWhereUniqueInput: { // input type
+    id?: string | null; // String
+  }
 }
 
 export interface NexusGenEnums {
@@ -38,6 +41,7 @@ export interface NexusGenRootTypes {
 }
 
 export interface NexusGenAllTypes extends NexusGenRootTypes {
+  BottleWhereUniqueInput: NexusGenInputs['BottleWhereUniqueInput'];
 }
 
 export interface NexusGenFieldTypes {
@@ -62,6 +66,8 @@ export interface NexusGenFieldTypes {
   }
   Mutation: { // field return type
     CreateBottle: NexusGenRootTypes['Bottle']; // Bottle!
+    deleteOneBottle: NexusGenRootTypes['Bottle'] | null; // Bottle
+    UpdateBottle: NexusGenRootTypes['Bottle']; // Bottle!
   }
   Query: { // field return type
     Bottle: NexusGenRootTypes['Bottle'] | null; // Bottle
@@ -73,11 +79,22 @@ export interface NexusGenFieldTypes {
 export interface NexusGenArgTypes {
   Mutation: {
     CreateBottle: { // args
-      bottleType?: string | null; // String
+      bottleType: string; // String!
       description?: string | null; // String
       imageUrl?: string | null; // String
+      itemCode: string; // String!
+      price: number; // Float!
+    }
+    deleteOneBottle: { // args
+      where: NexusGenInputs['BottleWhereUniqueInput']; // BottleWhereUniqueInput!
+    }
+    UpdateBottle: { // args
+      bottleType?: string | null; // String
+      description?: string | null; // String
+      id: string; // ID!
+      imageUrl?: string | null; // String
       itemCode?: string | null; // String
-      price?: string | null; // String
+      price?: number | null; // Float
     }
   }
   Query: {
@@ -97,7 +114,7 @@ export interface NexusGenInheritedFields {}
 
 export type NexusGenObjectNames = "Bottle" | "Bundle" | "Mutation" | "Query";
 
-export type NexusGenInputNames = never;
+export type NexusGenInputNames = "BottleWhereUniqueInput";
 
 export type NexusGenEnumNames = never;
 

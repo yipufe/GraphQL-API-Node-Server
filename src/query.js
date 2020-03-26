@@ -1,4 +1,4 @@
-import { idArg, queryType, stringArg, mutationField, mutationType } from 'nexus'
+import { idArg, queryType, floatArg, stringArg, mutationField, mutationType } from 'nexus'
 
 export const Query = queryType({
     definition(t) {
@@ -50,9 +50,9 @@ export const Mutation = mutationType({
         t.field('CreateBottle', {
             type: 'Bottle',
             args: {
-                itemCode: stringArg({nullable: true}),
-                bottleType: stringArg({nullable: true}),
-                price: stringArg(),
+                itemCode: stringArg({required: true}),
+                bottleType: stringArg({required: true}),
+                price: floatArg({required: true}),
                 description: stringArg({nullable: true}),
                 imageUrl: stringArg({nullable: true}),
 
@@ -62,7 +62,7 @@ export const Mutation = mutationType({
                     data: {
                         itemCode: itemCode,
                         bottleType: bottleType,
-                        price: 5,
+                        price: price,
                         description: description,
                         imageUrl: imageUrl
                     }
@@ -70,6 +70,38 @@ export const Mutation = mutationType({
                 
             }
         })
+
+
+        t.field('UpdateBottle', {
+            type: 'Bottle',
+            args: {
+                id: idArg({required: true}),
+                itemCode: stringArg(),
+                bottleType: stringArg(),
+                price: floatArg(),
+                description: stringArg(),
+                imageUrl: stringArg(),
+            },
+            resolve: (parent, {id, itemCode, bottleType, price, description, imageUrl}, ctx) => {
+                return ctx.prisma.bottle.update({
+                    where: {
+                        id: id
+                    },
+                    data: {
+                        itemCode: itemCode,
+                        bottleType: bottleType,
+                        price: price,
+                        description: description,
+                        imageUrl: imageUrl
+                    }
+                })                
+            }
+
+
+        })
+
+        t.crud.deleteOneBottle();
+
     }
 })
 
@@ -116,6 +148,27 @@ query getBundles {
 mutation setBottle {
   CreateBottle {
 		itemCode: id
+  }
+}
+
+mutation updateBottle {
+  UpdateBottle(id: "ck87kp9d40000d4ugm4x3r71c", price: 3.99) {
+    itemCode
+    bottleType
+    price
+    description
+  }
+}
+
+mutation deleteBottle {
+	deleteOneBottle(where: {
+    id: "ck894xhyz0000j4ug905vbfkg"
+  }) {
+    id
+    itemCode
+    bottleType
+    price
+    description
   }
 }
 
