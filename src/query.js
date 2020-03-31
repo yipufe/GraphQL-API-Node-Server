@@ -15,6 +15,19 @@ export const Query = queryType({
             }
         })
 
+        t.field('Bundle', {
+            type: 'Bundle',
+            nullable: true,
+            args: { id: idArg() },
+            resolve: (parent, { id }, ctx) => {
+                return ctx.prisma.bundle.findOne({
+                    where: {
+                        id,
+                    }
+                })
+            }
+        })
+
         t.list.field('Bottles', {
             type: 'Bottle',
             args: {
@@ -72,6 +85,28 @@ export const Mutation = mutationType({
         })
 
 
+        t.field('CreateBundle', {
+            type: 'Bundle',
+            args: {
+                bundle: stringArg({required: true}),
+                price: floatArg({required: true}),
+                description: stringArg({nullable: true}),
+                imageUrl: stringArg({nullable: true}),
+            },
+            resolve: (parent, {bundle, price, description, imageUrl}, ctx) => {
+                return ctx.prisma.bundle.create({
+                    data: {
+                        bundle: bundle,
+                        price: price,
+                        description: description,
+                        imageUrl: imageUrl
+                    }
+                })
+                
+            }
+        })
+
+
         t.field('UpdateBottle', {
             type: 'Bottle',
             args: {
@@ -96,12 +131,34 @@ export const Mutation = mutationType({
                     }
                 })                
             }
+        })
 
-
+        t.field('UpdateBundle', {
+            type: 'Bundle',
+            args: {
+                id: idArg({required: true}),
+                bundle: stringArg(),
+                price: floatArg(),
+                description: stringArg(),
+                imageUrl: stringArg(),
+            },
+            resolve: (parent, {id, bundle, price, description, imageUrl}, ctx) => {
+                return ctx.prisma.bundle.update({
+                    where: {
+                        id: id
+                    },
+                    data: {
+                        bundle: bundle,
+                        price: price,
+                        description: description,
+                        imageUrl: imageUrl
+                    }
+                })
+            }
         })
 
         t.crud.deleteOneBottle();
-
+        t.crud.deleteOneBundle();
     }
 })
 
