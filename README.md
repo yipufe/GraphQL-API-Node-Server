@@ -1,6 +1,7 @@
 # GraphQL API Server
 
 ## Setup
+This setup assumes you already and a current version of Nodejs and npm installed on your machine.
 
 ### Clone Repository
 
@@ -92,6 +93,21 @@ query getBundles {
 }
 ```
 
+#### Get Bundle by id
+This query gets a Bundle by a specified id
+
+```
+query getBundle {
+  Bundle(id: "ck8f62gu30029anau2ujhjjyd") {
+    id
+    bundle
+    price
+    description
+  }
+}
+```
+
+
 ### Mutations
 
 #### Create Bottle
@@ -102,6 +118,22 @@ mutation setBottle {
 	  id
     itemCode
     bottleType
+    price
+    description
+    imageUrl
+  }
+}
+```
+
+#### Create Bundle
+The following will create a Bundle.
+Use the bundle parameter to string together the Bottle itemCodes as a comma seperated list.
+
+```
+mutation setBundle {
+  CreateBundle(bundle: "00105,00106,00107,00109", price: 119.99, description: "A random set of bottles", imageUrl: "https://somerandom.bottle.img/bottles.jpg") {
+    id
+    bundle
     price
     description
     imageUrl
@@ -123,8 +155,24 @@ mutation updateBottle {
 }
 ```
 
+#### Update Bundle
+This will update a Bundle price were the Bundle id and price and provided
+
+```
+mutation updateBundle {
+  UpdateBundle(id: "ck8geb4xg00005rauis4wejpv", price: 149.99) {
+    id
+    bundle
+    price
+    description
+    imageUrl
+    updatedAt
+  }
+}
+```
+
 #### Delete Bottle
-This will delete a Bottle with a give id
+This will delete a Bottle with a given id
 
 ```
 mutation deleteBottle {
@@ -134,6 +182,22 @@ mutation deleteBottle {
     id
     itemCode
     bottleType
+    price
+    description
+  }
+}
+```
+
+#### Delete Bundle
+This will delete a Bundle with a given id
+
+```
+mutation deleteBundle {
+  deleteOneBundle(where: {
+    id: "ck8geb4xg00005rauis4wejpv"
+  }) {
+    id
+    bundle
     price
     description
   }

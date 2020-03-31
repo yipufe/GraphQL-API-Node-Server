@@ -37,6 +37,7 @@ export const Query = queryType({
                 return ctx.prisma.bottle.findMany({
                     where: {
                         OR: [
+                            {itemCode: {contains: searchString}},
                             {bottleType: {contains: searchString}},
                             {description: {contains: searchString}}
                         ],
