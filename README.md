@@ -15,10 +15,13 @@ git clone https://github.com/yipufe/GraphQL-API-Node-Server.git
 
 ```npm install```
 
-### Run setup scripts
+### Run setup
+Run the following to set up the project
+```
+npm run build
+```
 
-Run the following in this order
-
+Alternatively you can run the following in this order 
 ```
 npm run launchDocker
 npm run createDB

@@ -2,6 +2,7 @@ import { idArg, queryType, floatArg, stringArg, mutationField, mutationType } fr
 
 export const Query = queryType({
     definition(t) {
+        //Returns Bottle by id
         t.field('Bottle', {
             type: 'Bottle',
             nullable: true,
@@ -15,6 +16,7 @@ export const Query = queryType({
             }
         })
 
+        //Returns Bundle by id
         t.field('Bundle', {
             type: 'Bundle',
             nullable: true,
@@ -28,6 +30,7 @@ export const Query = queryType({
             }
         })
 
+        //Returns list of all bottles or list of bottles matching searchString
         t.list.field('Bottles', {
             type: 'Bottle',
             args: {
@@ -46,6 +49,7 @@ export const Query = queryType({
             }
         })
 
+        //Returns Bottle by itemCode
         t.list.field('BottlesByCode', {
             type: 'Bottle',
             args: {
@@ -61,7 +65,7 @@ export const Query = queryType({
         })
 
 
-        //bundles
+        //Returns all Bundles
         t.list.field('Bundles', {
             type: 'Bundle',
             resolve: (parent, args, ctx) => {
@@ -76,6 +80,8 @@ export const Query = queryType({
 export const Mutation = mutationType({
     type: 'Mutation',
     definition(t) {
+    
+        //Creates a Bottle
         t.field('CreateBottle', {
             type: 'Bottle',
             args: {
@@ -100,7 +106,7 @@ export const Mutation = mutationType({
             }
         })
 
-
+        //Creates a Bundle
         t.field('CreateBundle', {
             type: 'Bundle',
             args: {
@@ -122,7 +128,7 @@ export const Mutation = mutationType({
             }
         })
 
-
+        //Updates a Bottle matching an id
         t.field('UpdateBottle', {
             type: 'Bottle',
             args: {
@@ -149,6 +155,7 @@ export const Mutation = mutationType({
             }
         })
 
+        //Updates a Bundle matching an id
         t.field('UpdateBundle', {
             type: 'Bundle',
             args: {
@@ -173,8 +180,8 @@ export const Mutation = mutationType({
             }
         })
 
-        t.crud.deleteOneBottle();
-        t.crud.deleteOneBundle();
+        t.crud.deleteOneBottle();   //Delete Bottle by id
+        t.crud.deleteOneBundle();   //Delete Bundle by id
     }
 })
 
