@@ -46,6 +46,21 @@ export const Query = queryType({
             }
         })
 
+        t.list.field('BottlesByCode', {
+            type: 'Bottle',
+            args: {
+               searchCode: stringArg({nullable: true}),
+            },
+            resolve: (parent, { searchCode }, ctx) => {
+                return ctx.prisma.bottle.findMany({
+                    where: {
+                        itemCode: searchCode
+                    },
+                })
+            }
+        })
+
+
         //bundles
         t.list.field('Bundles', {
             type: 'Bundle',
