@@ -146,8 +146,13 @@ query getBundles {
 }
 
 mutation setBottle {
-  CreateBottle {
-		itemCode: id
+  CreateBottle(itemCode: "555", bottleType: "pop", price: 50, description: "no description", imageUrl: "None") {
+	id
+    itemCode
+    bottleType
+    price
+    description
+    imageUrl
   }
 }
 
