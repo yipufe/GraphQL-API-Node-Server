@@ -6,8 +6,10 @@ This setup assumes you already and a current version of Nodejs and npm installed
 ### Clone Repository
 
 Clone this repository:
+```
 git init
 git clone https://github.com/yipufe/GraphQL-API-Node-Server.git
+```
 
 ### Install dependancies
 
@@ -73,6 +75,21 @@ query filterBottles {
     bottleType
     price
     description
+  }
+}
+```
+
+#### Get Bottle by itemCode
+This query will get a Bottle with a specified itemCode
+```
+query filterbottlesByCode {
+  BottlesByCode(searchCode: "00105") {
+    id
+    itemCode
+    bottleType
+    price
+    description
+    imageUrl
   }
 }
 ```

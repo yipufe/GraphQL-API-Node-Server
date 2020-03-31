@@ -7,6 +7,7 @@
     "generate": "npx prisma2 generate",
     "postinstall": "npm -s run generate",
     "seed": "node -r esm prisma/seed",
+    "build": "npm run launchDocker && npm run createDB && npm run generate && npm run postinstall && npm run seed",
     "rebuild": "npm run nuke && npm run launchDocker && npm run createDB && npm run generate && npm run postinstall && npm run seed",
     
     "dev": "npx prisma2 studio --experimental",
