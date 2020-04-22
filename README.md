@@ -3,7 +3,7 @@
 This server can be previewed at [http://134.122.29.102:4000/](http://134.122.29.102:4000/)
 
 ## Setup
-This setup assumes you already and a current version of Nodejs and npm installed on your machine.
+This setup assumes you already have a current version of Nodejs and npm installed on your machine.
 
 ### Clone Repository
 
@@ -32,7 +32,7 @@ npm run postinstall
 npm run seed
 ```
 
-#### Rebuild (use if already built)
+#### Rebuild (use if you have already built)
 If ever you need to rebuild the project, use the following
 ```
 npm run rebuild
@@ -42,9 +42,9 @@ npm run rebuild
 
 ```npm run start```
 
-## Queries and Mutations
-
 The server will be running on localhost:4000
+
+## Queries and Mutations
 
 ### Queries
 
@@ -77,7 +77,7 @@ query allBottles {
 }
 ```
 
-You can also search what is returned by passing in a searchString into the query as follows
+You can search what is in the database by passing in a searchString into the query as follows
 
 ```graphql
 query filterBottles {
@@ -143,7 +143,7 @@ The following will create a Bottle
 ```graphql
 mutation setBottle {
   CreateBottle(itemCode: "555", bottleType: "pop", price: 3.99, description: "some description", imageUrl: "https://somecool.image.com/someimage.jpg") {
-	  id
+    id
     itemCode
     bottleType
     price
@@ -184,7 +184,7 @@ mutation updateBottle {
 ```
 
 #### Update Bundle
-This will update a Bundle price were the Bundle id and price and provided
+This will update a Bundle price where the Bundle id and price and provided
 
 ```graphql
 mutation updateBundle {
@@ -204,7 +204,7 @@ This will delete a Bottle with a given id
 
 ```graphql
 mutation deleteBottle {
-	deleteOneBottle(where: {
+  deleteOneBottle(where: {
     id: "ck8g8pwre0000fhauhv99osjg"
   }) {
     id
