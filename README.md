@@ -1,5 +1,7 @@
 # GraphQL API Server
 
+This server can be previewed at [http://134.122.29.102:4000/](http://134.122.29.102:4000/)
+
 ## Setup
 This setup assumes you already and a current version of Nodejs and npm installed on your machine.
 
@@ -28,6 +30,12 @@ npm run createDB
 npm run generate
 npm run postinstall
 npm run seed
+```
+
+#### Rebuild (use if already built)
+If ever you need to rebuild the project, use the following
+```
+npm run rebuild
 ```
 
 ### Start server
