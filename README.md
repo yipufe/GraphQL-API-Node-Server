@@ -52,9 +52,9 @@ The server will be running on localhost:4000
 #### Get a Bottle
 You will need to change the id being used depending on what is in your database
 
-```
+```graphql
 query getBottle {
-	Bottle(id: "ck7nojju20000pwugv58v4ve7") {
+  Bottle(id: "ck7nojju20000pwugv58v4ve7") {
     id
     bottleType
     price
@@ -65,7 +65,7 @@ query getBottle {
 #### Get all Bottles
 This query returns all Bottles in the database
 
-```
+```graphql
 query allBottles {
   Bottles {
     id
@@ -79,7 +79,7 @@ query allBottles {
 
 You can also search what is returned by passing in a searchString into the query as follows
 
-```
+```graphql
 query filterBottles {
   Bottles(searchString: "water") {
     id
@@ -92,7 +92,7 @@ query filterBottles {
 
 #### Get Bottle by itemCode
 This query will get a Bottle with a specified itemCode
-```
+```graphql
 query filterbottlesByCode {
   BottlesByCode(searchCode: "00105") {
     id
@@ -109,7 +109,7 @@ query filterbottlesByCode {
 #### Get all Bundles
 This query returns all Bundles
 
-```
+```graphql
 query getBundles {
   Bundles {
     id
@@ -124,7 +124,7 @@ query getBundles {
 #### Get Bundle by id
 This query gets a Bundle by a specified id
 
-```
+```graphql
 query getBundle {
   Bundle(id: "ck8f62gu30029anau2ujhjjyd") {
     id
@@ -140,7 +140,7 @@ query getBundle {
 
 #### Create Bottle
 The following will create a Bottle
-```
+```graphql
 mutation setBottle {
   CreateBottle(itemCode: "555", bottleType: "pop", price: 3.99, description: "some description", imageUrl: "https://somecool.image.com/someimage.jpg") {
 	  id
@@ -157,7 +157,7 @@ mutation setBottle {
 The following will create a Bundle.
 Use the bundle parameter to string together the Bottle itemCodes as a comma seperated list.
 
-```
+```graphql
 mutation setBundle {
   CreateBundle(bundle: "00105,00106,00107,00109", price: 119.99, description: "A random set of bottles", imageUrl: "https://somerandom.bottle.img/bottles.jpg") {
     id
@@ -172,7 +172,7 @@ mutation setBundle {
 #### Update Bottle
 This will update a Bottle price with a given id
 
-```
+```graphql
 mutation updateBottle {
   UpdateBottle(id: "ck8g8pwre0000fhauhv99osjg", price: 5.99) {
     itemCode
@@ -186,7 +186,7 @@ mutation updateBottle {
 #### Update Bundle
 This will update a Bundle price were the Bundle id and price and provided
 
-```
+```graphql
 mutation updateBundle {
   UpdateBundle(id: "ck8geb4xg00005rauis4wejpv", price: 149.99) {
     id
@@ -202,7 +202,7 @@ mutation updateBundle {
 #### Delete Bottle
 This will delete a Bottle with a given id
 
-```
+```graphql
 mutation deleteBottle {
 	deleteOneBottle(where: {
     id: "ck8g8pwre0000fhauhv99osjg"
@@ -219,7 +219,7 @@ mutation deleteBottle {
 #### Delete Bundle
 This will delete a Bundle with a given id
 
-```
+```graphql
 mutation deleteBundle {
   deleteOneBundle(where: {
     id: "ck8geb4xg00005rauis4wejpv"
