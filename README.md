@@ -12,6 +12,8 @@ Clone this repository:
 git init
 git clone https://github.com/yipufe/GraphQL-API-Node-Server.git
 ```
+### Navigate into the directory
+```cd GraphQL-API-Node-Server```
 
 ### Install dependancies
 
